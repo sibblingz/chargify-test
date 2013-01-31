@@ -1,0 +1,17 @@
+p#notice= notice
+
+h1 Show customer
+
+p= @customer.id
+p= @customer.email
+
+h2 Subscrptions
+- if @customer.subscriptions.empty?
+  | Customer has no subscriptions
+-else
+  - @customer.subscriptions.each do |sub|
+    = link_to "#{sub.product.name}, #{sub.state}, #{sub.id}", url_for(sub)
+
+
+p= link_to 'Edit', edit_customer_path(@customer)
+p= link_to 'Back', customers_path

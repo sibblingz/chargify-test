@@ -1,0 +1,17 @@
+%h1 Listing product_families
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @product_families.each do |product_family|
+    %tr
+      %td= link_to 'Show', product_family
+      %td= link_to 'Edit', edit_product_family_path(product_family)
+      %td= link_to 'Destroy', product_family, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Product family', new_product_family_path

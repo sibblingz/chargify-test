@@ -1,0 +1,18 @@
+p#notice= notice
+
+h1 Showing a subscrition
+
+p= @subscription.id
+p= @subscription.state    
+p
+  | Product: 
+  = link_to "#{@subscription.product.name} ", url_for(@subscription.product)
+p
+  | Customer: 
+  = link_to "#{@subscription.customer.email} ", url_for(@subscription.customer)
+
+h3 Local actions
+p= link_to 'Edit',       edit_subscription_path(@subscription)
+p= link_to 'Destroy', @subscription, :method=>'delete', data: { confirm: "Really? You probably shouldn't destroy this subscription"}
+p= link_to 'Back',            subscriptions_path
+

@@ -1,0 +1,39 @@
+h1 Editing subscription
+
+h3 You should not edit this record directly. If you must, use the chargify website instead.
+
+| Subscription is in state: 
+strong= @subscription.state
+
+hr
+| Subscription belongs to the Customer: 
+strong= @subscription.customer.email
+
+hr
+| Subscription is for the Product:  
+strong= @subscription.product.name
+
+
+hr
+| Subscription is of the ProductFamily: 
+strong= @subscription.product.product_family.name
+|  which has the following possible Products:
+- @subscription.product.product_family.products.each do |product|
+  hr
+  = "--- "
+  strong= product.name
+  -if product == @subscription.product
+    strong
+      |  <--- you are here
+  - else
+    = link_to "Migrate this subscription to here", migrate_subscription_path(@subscription, to_product: product)
+
+hr
+h3 Chargify Actions
+p= link_to "Activate", reactivate_subscription_path(@subscription)
+p= link_to "Cancel",   cancel_subscription_path(@subscription)
+p= link_to "Sync",     sync_subscription_path(@subscription)
+
+hr
+p= link_to 'Show', @subscription
+p= link_to 'Back', subscriptions_path

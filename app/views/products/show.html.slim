@@ -1,0 +1,15 @@
+p#notice= notice
+
+h1 Show Product
+
+p
+  id
+  = @product.id
+p
+  name
+  = @product.name
+p
+  handle
+  = @product.handle
+
+p= link_to "Product Family", url_for(@product.product_family)

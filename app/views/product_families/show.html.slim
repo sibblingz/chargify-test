@@ -1,0 +1,13 @@
+p#notice= notice
+
+h1 Show Product Family
+p= @product_family.name
+p= @product_family.id
+
+h2 Products
+- if @product_family.products.empty?
+  | Customer has no products
+-else
+  - @product_family.products.each do |product|
+    p = link_to product.name, url_for(product)
+
